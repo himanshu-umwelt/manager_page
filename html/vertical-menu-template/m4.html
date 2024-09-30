@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard UI</title>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background */
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .graph-container {
+            flex: 0 0 70%; /* Left section occupies 70% of the width */
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .score-container {
+            flex: 0 0 25%; /* Right section occupies 25% of the width */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .score-box {
+            background-color: #74b9ff; /* Light blue background */
+            color: black;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .score-box:last-child {
+            margin-bottom: 0;
+        }
+
+        .chart {
+            width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #333;
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Graph Section -->
+        <div class="graph-container">
+            <h1>Your Engagement Trend</h1>
+            <canvas id="engagementChart" class="chart"></canvas>
+        </div>
+        
+        <!-- Score Section -->
+        <div class="score-container">
+            <div class="score-box">Your Score</div>
+            <div class="score-box">Your Team Score</div>
+            <div class="score-box">Your Supervisor Score</div>
+            <div class="score-box">Your Organization Score</div>
+        </div>
+    </div>
+
+    <!-- Chart.js Script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('engagementChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [...Array(141).keys()], // X-axis data (from 0 to 140)
+                datasets: [
+                    {
+                        label: 'Europe',
+                        borderColor: '#3498db', // Blue color for Europe
+                        data: [120, 130, 140, 150, 160, 170, 180, 220, 230, 240, 280, 300, 320, 330, 340, 350, 360, 370, 380, 390, 400], // Sample data
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Asia',
+                        borderColor: '#f39c12', // Orange color for Asia
+                        data: [100, 120, 130, 150, 160, 170, 180, 200, 210, 220, 250, 270, 280, 290, 300, 310, 320, 330, 340, 350], // Sample data
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Africa',
+                        borderColor: '#f1c40f', // Yellow color for Africa
+                        data: [80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 200, 220, 240, 250, 260, 270, 280, 290, 300], // Sample data
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Time (Days)',
+                            color: '#333'
+                        }
+                    },
+                    y: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Engagement',
+                            color: '#333'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

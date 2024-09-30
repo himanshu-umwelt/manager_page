@@ -1,0 +1,299 @@
+<!doctype html>
+
+<html
+  lang="en"
+  class="light-style layout-navbar-fixed layout-menu-fixed layout-compact"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../../assets/"
+  data-template="vertical-menu-template"
+  data-style="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Cards Analytics- UI elements | Materialize - Material Design HTML Admin Template</title>
+
+    <meta name="description" content="" />
+
+    <style>
+    .feedback-card {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+    }
+    .feedback-section {
+      width: 45%;
+      padding: 20px;
+    }
+    .positive {
+      background-color: #d4edda;
+      border-color: #c3e6cb;
+    }
+    .negative {
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+    }
+    .divider {
+      height: 100%;
+      width: 2px;
+      background-color: #ccc;
+      margin: 0 15px;
+    }
+
+        .card {
+            transition: height 0.3s ease;
+        }
+        .expanding-card {
+            height: auto; /* Allow card to expand */
+        }
+
+      </style>
+
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap"
+      rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/vendor/fonts/remixicon/remixicon.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Menu waves for no-customizer fix -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/node-waves/node-waves.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/apex-charts/apex-charts.css" />
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/pages/cards-analytics.css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/pages/wizard-ex-checkout.css" />
+
+
+    <!-- Helpers -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+    <script src="../../assets/vendor/js/template-customizer.js"></script>
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../../assets/js/config.js"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar" style="align-items: center;">
+        <div class="layout-container" style="align-items: center;">
+          <div class="layout">
+            <div style="margin-top: 50px; align-items: center;align-content: center;">
+              <div class="container-xxl flex-grow-1 container-p-y">
+                <!-- Navigation Tabs -->
+                <ul class="nav nav-tabs mb-4" id="dashboardTabs" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="overview-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="stats-tab" data-bs-toggle="tab" href="#stats" role="tab" aria-controls="stats" aria-selected="false">Statistics</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="feedback-tab" data-bs-toggle="tab" href="#feedback" role="tab" aria-controls="feedback" aria-selected="false">Feedback</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="charts-tab" data-bs-toggle="tab" href="#charts" role="tab" aria-controls="charts" aria-selected="false">Charts</a>
+                  </li>
+                </ul>
+    
+                <!-- Tab Content -->
+                <div class="tab-content" id="dashboardTabsContent">
+                  <!-- Overview Tab -->
+                  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                    <div class="card bg-transparent shadow-none border-0 mb-6">
+                      <div class="card-body row g-6 p-0 pb-5">
+                        <div class="col-12 col-md-8">
+                          <h5 class="mb-2">Welcome back, <span class="h4 fw-semibold">Manager 👋🏻</span></h5>
+                          <p>Your team's current engagement score is 4.1, Let's aim for even higher!</p>
+                          <div class="d-flex justify-content-between flex-wrap gap-4">
+                            <!-- No. of Interventions -->
+                            <div class="d-flex align-items-center gap-4">
+                              <div class="avatar avatar-lg">
+                                <div class="avatar-initial bg-label-primary rounded-3">
+                                  <img src="../../assets/svg/icons/laptop.svg" alt="Interventions" class="img-fluid" />
+                                </div>
+                              </div>
+                              <div class="content-right">
+                                <p>No. of Interventions Completed</p>
+                                <span class="text-primary h5">750</span>
+                              </div>
+                            </div>
+                            <!-- Response Rate -->
+                            <div class="d-flex align-items-center gap-4">
+                              <div class="avatar avatar-lg">
+                                <div class="avatar-initial bg-label-info rounded-3">
+                                  <img src="../../assets/svg/icons/lightbulb.svg" alt="Response Rate" class="img-fluid" />
+                                </div>
+                              </div>
+                              <div class="content-right">
+                                <p>Response Rate</p>
+                                <span class="text-info h5">82%</span>
+                              </div>
+                            </div>
+                            <!-- Actions Completed -->
+                            <div class="d-flex align-items-center gap-4">
+                              <div class="avatar avatar-lg">
+                                <div class="avatar-initial bg-label-warning rounded-3">
+                                  <img src="../../assets/svg/icons/check.svg" alt="Actions Completed" class="img-fluid" />
+                                </div>
+                              </div>
+                              <div class="content-right">
+                                <p>Actions Completed</p>
+                                <span class="text-warning h5">81%</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                          <h5>Sentiment Response</h5>
+                          <p>Overall report</p>
+                          <h5>1500 <span class="text-body">comments</span></h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <!-- Statistics Tab -->
+                  <div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab">
+                    <div class="row gy-6">
+                      <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="d-flex align-items-center">
+                              <div class="avatar me-4 bg-label-primary rounded-3">
+                                <i class="ri-user-star-line ri-24px"></i>
+                              </div>
+                              <div>
+                                <h5 class="mb-0">82%</h5>
+                                <p>Your Score</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Repeat for other statistics -->
+                    </div>
+                  </div>
+    
+                  <!-- Feedback Tab -->
+                  <div class="tab-pane fade" id="feedback" role="tabpanel" aria-labelledby="feedback-tab">
+                    <div class="card shadow-sm">
+                      <div class="card-body">
+                        <h3>Employee Survey Feedback</h3>
+                        <p>Summary of positive and negative feedback from your team.</p>
+                        <div class="d-flex">
+                          <!-- Positive Feedback -->
+                          <div class="me-3">
+                            <h5>Positive Feedback</h5>
+                            <ul>
+                              <li>Flexible working hours have improved work-life balance.</li>
+                              <li>Supportive management fosters a positive environment.</li>
+                            </ul>
+                          </div>
+                          <!-- Negative Feedback -->
+                          <div>
+                            <h5>Negative Feedback</h5>
+                            <ul>
+                              <li>Overwhelming workload leads to stress.</li>
+                              <li>Lack of communication on project goals.</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <!-- Charts Tab -->
+                  <div class="tab-pane fade" id="charts" role="tabpanel" aria-labelledby="charts-tab">
+                    <div class="row gy-6">
+                      <div class="col-md-6">
+                        <div class="card">
+                          <div class="card-header">Factors Working Well</div>
+                          <div class="card-body">
+                            <canvas id="factorsWorkingWellChart"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card">
+                          <div class="card-header">Factors Not Working Well</div>
+                          <div class="card-body">
+                            <canvas id="factorsNotWorkingWellChart"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script>
+        const queryInput = document.getElementById('queryInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const responseContainer = document.getElementById('responseContainer');
+
+        submitBtn.addEventListener('click', () => {
+            const query = queryInput.value;
+            if (query) {
+                responseContainer.classList.remove('d-none');
+                // Simulate a response from the AI (replace with actual AI call)
+                responseContainer.querySelector('textarea').value = `AI response to: "${query}"`;
+                responseContainer.closest('.card').classList.add('expanding-card');
+            }
+        });
+    </script>
+    <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../assets/vendor/js/bootstrap.js"></script>
+    <script src="../../assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="../../assets/vendor/js/menu.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="../../assets/vendor/libs/chartjs/chartjs.js"></script>
+
+    <!-- Main JS -->
+    <script src="../../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="../../assets/js/cards-analytics.js"></script>
+    <script src="../../assets/js/app-academy-dashboard.js"></script>
+    <script src="../../assets/js/charts-chartjs.js"></script>
+    <script src="../../assets/js/wizard-ex-checkout.js"></script>
+
+
+  </body>
+</html>

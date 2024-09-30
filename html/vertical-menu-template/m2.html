@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+body {
+    background-color: #f4f5f7;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+header {
+    background-color: #4a69bd;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 0 0 20px 20px;
+}
+
+.card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #6c5ce7;
+    color: white;
+    font-size: 1.25rem;
+    padding: 1rem;
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.score {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+.comparison {
+    font-size: 1rem;
+    color: #636e72;
+}
+
+.illustration img {
+    width: 60px;
+    margin-top: 10px;
+}
+
+.text-success {
+    color: #55efc4 !important;
+}
+
+.text-primary {
+    color: #74b9ff !important;
+}
+
+.text-warning {
+    color: #ffeaa7 !important;
+}
+
+.text-danger {
+    color: #ff7675 !important;
+}
+
+.display-4 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2d3436;
+}
+
+.text-muted {
+    color: #636e72 !important;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.row {
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+canvas {
+    margin-top: 1rem;
+}
+
+    </style>
+</head>
+<body>
+
+<header class="bg-primary text-white text-center py-4">
+    <h1 class="mb-0">Manager Engagement Dashboard</h1>
+</header>
+
+<div class="container my-5">
+
+    <div class="row g-4">
+        <!-- Your Score Card -->
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Your Score</h5>
+                    <p class="score text-success">4.2/5</p>
+                    <p class="comparison">+0.2 since last month</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Team Score Card -->
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Your Team Score</h5>
+                    <p class="score text-primary">3.8/5</p>
+                    <p class="comparison">+0.1 since last month</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Supervisor Score Card -->
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Your Supervisor Score</h5>
+                    <p class="score text-warning">4.0/5</p>
+                    <p class="comparison">0.0 since last month</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Organization Score Card -->
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Your Organization Score</h5>
+                    <p class="score text-danger">3.6/5</p>
+                    <p class="comparison">-0.1 since last month</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-4">
+        <!-- Engagement Score Card -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Engagement Score</h3>
+                </div>
+                <div class="card-body">
+                    <p class="display-4">8.0/10</p>
+                    <p class="text-muted">Good! We're going the right way.</p>
+                    <canvas id="engagementScoreChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Response Rate Card -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Response Rate</h3>
+                </div>
+                <div class="card-body text-center">
+                    <p class="display-4">91%</p>
+                    <p class="text-muted">265 out of 291 employees have responded.</p>
+                    <div class="illustration">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1999/1999192.png" alt="response illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Space Mood Card -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Space Mood</h3>
+                </div>
+                <div class="card-body text-center">
+                    <p class="display-4">82% Happy</p>
+                    <p class="text-muted">82% of people feel happy working here.</p>
+                    <div class="illustration">
+                        <img src="https://cdn-icons-png.flaticon.com/512/179/179386.png" alt="mood illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-4">
+        <!-- Factors Working Well Card -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Factors Working Well</h3>
+                </div>
+                <div class="card-body">
+                    <canvas id="factorsWorkingWellChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Factors Not Working Well Card -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Factors Not Working Well</h3>
+                </div>
+                <div class="card-body">
+                    <canvas id="factorsNotWorkingWellChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Engagement Score Trend Chart
+    const ctx1 = document.getElementById('engagementScoreChart').getContext('2d');
+    new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ['Aug', 'Sep', 'Oct', 'Nov'],
+            datasets: [{
+                label: 'Engagement Score',
+                data: [7.5, 7.8, 8.0, 8.2],
+                backgroundColor: '#007bff'
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Factors Working Well (Horizontal Bar Chart)
+    const ctx2 = document.getElementById('factorsWorkingWellChart').getContext('2d');
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Appreciation', 'Feedback', 'Learning'],
+            datasets: [{
+                label: 'Scores',
+                data: [8.4, 8.2, 9.0],
+                backgroundColor: '#007bff'
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            scales: {
+                x: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Factors Not Working Well (Horizontal Bar Chart)
+    const ctx3 = document.getElementById('factorsNotWorkingWellChart').getContext('2d');
+    new Chart(ctx3, {
+        type: 'bar',
+        data: {
+            labels: ['Job-Person Fit', 'Work Life Balance', 'Connect'],
+            datasets: [{
+                label: 'Scores',
+                data: [7.4, 7.7, 7.7],
+                backgroundColor: '#dc3545'
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            scales: {
+                x: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
